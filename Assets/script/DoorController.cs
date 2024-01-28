@@ -32,7 +32,7 @@ public class DoorController : MonoBehaviour, Interactable
         door.landingPos = GetLandingPos(door.doorPos, door.facingDirection);
         if (door.room.roomObject.name != GameController.Instance.currentRoom.roomObject.name)
         {
-            door.room.roomObject.SetActive(false);
+            door.room.roomObject.SetActive(true);
         }
     }
 
