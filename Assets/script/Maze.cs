@@ -7,8 +7,8 @@ public class Maze: MonoBehaviour
 {
     public static Maze Instance { get; private set; }
     public int[,] maze;
-    public const int mazeRow = 23;
-    public const int mazeCol = 23;
+    public const int mazeRow = 23; // the width/height of the maze have to be odd such that the wall surrounds the maze
+    public const int mazeCol = 23; // e.g.: 1=wall; 0=path; If the maze width/height is odd, the maze will be: 10101
 
 
     private void Awake()
@@ -28,7 +28,6 @@ public class Maze: MonoBehaviour
             }
         }
         Backtrack(1, 1);
-
     }
     private void Backtrack(int rowNum, int colNum)
     {
@@ -38,7 +37,7 @@ public class Maze: MonoBehaviour
         {
             possiblePath.Add(new int[] { rowNum - 2, colNum });
         }
-        if (rowNum + 2 < mazeRow && maze[rowNum + 2, colNum] == 1) // move down
+        if (rowNum + 2 < mazeRow - 1 && maze[rowNum + 2, colNum] == 1) // move down
         {
             possiblePath.Add(new int[] { rowNum + 2, colNum });
         }
@@ -46,7 +45,7 @@ public class Maze: MonoBehaviour
         {
             possiblePath.Add(new int[] { rowNum, colNum - 2 });
         }
-        if (colNum + 2 < mazeCol && maze[rowNum, colNum + 2] == 1) // move right
+        if (colNum + 2 < mazeCol - 1 && maze[rowNum, colNum + 2] == 1) // move right
         {
             possiblePath.Add(new int[] { rowNum, colNum + 2 });
         }

@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     {
         dayCount = 1;
         lightGlobal = GetComponent<Light2D>();
+        lightGlobal.intensity = currentRoom.lightIntensity;
         Instance = this;
     }
     private void Start()
@@ -44,7 +45,10 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (!currentRoom.roomObject.activeSelf) { currentRoom.roomObject.SetActive(true); }
+        if (!currentRoom.roomObject.activeSelf)
+        {
+            currentRoom.roomObject.SetActive(true);
+        }
         if (state == Gamestate.Transition)
        {
             return;

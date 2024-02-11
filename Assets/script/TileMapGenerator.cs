@@ -37,7 +37,6 @@ public class TileMapGenerator : MonoBehaviour
             {
                 isWall = false;
             }
-            Debug.Log(Maze.Instance.maze.Length);
             GenerateTile(Maze.Instance.maze, isWall, Maze.mazeRow, Maze.mazeCol);
         }
 
@@ -45,9 +44,9 @@ public class TileMapGenerator : MonoBehaviour
 
     private void GenerateTile(int[,] maze, bool isWall, int mazeRow, int mazeCol)
     {
-        for (int rowNum = 0; rowNum < mazeRow; rowNum += 2)
+        for (int rowNum = 0; rowNum < mazeRow * 2; rowNum += 2)
         {
-            for (int colNum = 0; colNum < mazeCol; colNum += 2)
+            for (int colNum = 0; colNum < mazeCol * 2; colNum += 2)
             {
                 Vector3Int tilePosition = new Vector3Int(defaultX - colNum, defaultY - rowNum, 0);
                 if (maze[rowNum / 2, colNum / 2] == 1 && isWall)
